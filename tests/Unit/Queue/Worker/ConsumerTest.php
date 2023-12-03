@@ -8,7 +8,6 @@ use Amp\PHPUnit\AsyncTestCase;
 use Nayleen\Async\Bus\Queue\Consumer as QueueConsumer;
 use Nayleen\Async\Bus\Queue\Queue;
 use Nayleen\Async\Test\TestKernel;
-use Nayleen\Async\Worker\Queue\Consumer;
 
 /**
  * @internal
