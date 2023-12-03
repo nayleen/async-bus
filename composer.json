@@ -1,0 +1,49 @@
+{
+  "name": "nayleen/async-bus",
+  "description": "An example Bus implementation for distributed event processing.",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1",
+    "nayleen/async": "~0"
+  },
+  "require-dev": {
+    "amphp/redis": "^2",
+    "nayleen/codestandard": "dev-latest",
+    "nayleen/development-dependencies": "^3",
+    "roave/security-advisories": "dev-latest"
+  },
+  "suggest": {
+    "amphp/redis": "To use Redis as the backing queue for busses"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "Nayleen\\Async\\Bus\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Nayleen\\Async\\Bus\\": [
+        "tests/Integration",
+        "tests/Unit"
+      ]
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "ergebnis/composer-normalize": true,
+      "phpstan/extension-installer": true
+    },
+    "lock": false,
+    "preferred-install": {
+      "*": "dist"
+    },
+    "sort-packages": true
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-main": "0.1.x-dev"
+    }
+  }
+}

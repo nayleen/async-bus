@@ -1,0 +1,4 @@
+.idea/
+coverage/
+vendor/
+docker-compose.override.yaml
