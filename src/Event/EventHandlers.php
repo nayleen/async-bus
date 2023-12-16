@@ -16,7 +16,7 @@ class EventHandlers
     private array $handlers = [];
 
     /**
-     * @param array<string, list<Closure(Message): void>> $handlers
+     * @param array<non-empty-string, list<Closure(Message): void>> $handlers
      */
     public function __construct(array $handlers = [])
     {
@@ -28,10 +28,12 @@ class EventHandlers
     }
 
     /**
+     * @param non-empty-string $name
      * @param Closure(Message): void $handler
      */
     public function add(string $name, Closure $handler): void
     {
+        assert($name !== '');
         assert(Validator::validate($handler));
 
         if (!isset($this->handlers[$name])) {
