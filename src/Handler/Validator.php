@@ -12,7 +12,7 @@ use ReflectionNamedType;
 /**
  * @internal
  */
-abstract class Validator
+final readonly class Validator
 {
     public static function validate(Closure|Handler $handler): bool
     {

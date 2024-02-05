@@ -11,12 +11,12 @@ use Nayleen\Async\Bus\Queue\Publisher;
 use Nayleen\Async\Bus\Queue\Queue;
 use Throwable;
 
-class PublishesOnErrorMiddleware implements Middleware
+readonly class PublishesOnErrorMiddleware implements Middleware
 {
     public function __construct(
-        private readonly Publisher $publisher,
-        private readonly Queue $queue,
-        private readonly bool $rethrow = true,
+        private Publisher $publisher,
+        private Queue $queue,
+        private bool $rethrow = true,
     ) {}
 
     public function handle(Message $message, Closure $next): void

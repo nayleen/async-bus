@@ -10,11 +10,11 @@ use Nayleen\Async\Bus\Message;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 
-class LoggingMiddleware implements Middleware
+readonly class LoggingMiddleware implements Middleware
 {
     public function __construct(
-        private readonly LoggerInterface $logger,
-        private readonly int|Level|string $level = LogLevel::DEBUG,
+        private LoggerInterface $logger,
+        private int|Level|string $level = LogLevel::DEBUG,
     ) {}
 
     public function handle(Message $message, Closure $next): void

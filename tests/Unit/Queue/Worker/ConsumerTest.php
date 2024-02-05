@@ -26,6 +26,6 @@ final class ConsumerTest extends AsyncTestCase
         $queueConsumer->expects(self::once())->method('consume')->with($queue);
 
         $worker = new Consumer($queueConsumer, $queue);
-        $worker->run($kernel);
+        $worker->execute($kernel);
     }
 }

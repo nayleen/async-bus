@@ -4,24 +4,19 @@ declare(strict_types = 1);
 
 namespace Nayleen\Async\Bus\Queue\Worker;
 
-use Amp\Cancellation;
 use Nayleen\Async\Bus\Queue\Consumer as QueueConsumer;
 use Nayleen\Async\Bus\Queue\Queue;
+use Nayleen\Async\Kernel;
 use Nayleen\Async\Timers;
 use Nayleen\Async\Worker;
 
-class Consumer extends Worker
+readonly class Consumer extends Worker
 {
-    public function __construct(
-        private readonly QueueConsumer $consumer,
-        private readonly Queue $queue,
-        Timers $timers = new Timers(),
-    ) {
-        parent::__construct($timers);
-    }
-
-    protected function execute(Cancellation $cancellation): void
+    public function __construct(private QueueConsumer $consumer, private Queue $queue)
     {
-        $this->consumer->consume($this->queue, $cancellation);
+        parent::__construct(
+            fn (Kernel $kernel) => $this->consumer->consume($this->queue, $kernel->cancellation),
+            new Timers(),
+        );
     }
 }

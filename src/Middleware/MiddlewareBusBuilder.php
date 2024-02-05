@@ -16,15 +16,15 @@ use Psr\Log\NullLogger;
 /**
  * @template-covariant TBus of MiddlewareBus
  */
-class MiddlewareBusBuilder
+readonly class MiddlewareBusBuilder
 {
     /**
      * @param class-string<TBus> $class
      */
     public function __construct(
-        private readonly string $class = MiddlewareBus::class,
-        private readonly LoggerInterface $logger = new NullLogger(),
-        private readonly int|Level|string $level = LogLevel::DEBUG,
+        private string $class = MiddlewareBus::class,
+        private LoggerInterface $logger = new NullLogger(),
+        private int|Level|string $level = LogLevel::DEBUG,
     ) {}
 
     /**

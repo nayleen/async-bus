@@ -11,11 +11,11 @@ use Nayleen\Async\Bus\Queue\Publisher;
 use Nayleen\Async\Bus\Queue\Queue;
 use OutOfBoundsException;
 
-class PublishesUnhandledMiddleware implements Middleware
+readonly class PublishesUnhandledMiddleware implements Middleware
 {
     public function __construct(
-        private readonly Publisher $publisher,
-        private readonly Queue $queue,
+        private Publisher $publisher,
+        private Queue $queue,
     ) {}
 
     public function handle(Message $message, Closure $next): void

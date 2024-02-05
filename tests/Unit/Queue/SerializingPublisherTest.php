@@ -11,7 +11,7 @@ use Nayleen\Async\Bus\Message;
 /**
  * @internal
  */
-final class PublisherTest extends AsyncTestCase
+final class SerializingPublisherTest extends AsyncTestCase
 {
     /**
      * @test
@@ -27,7 +27,7 @@ final class PublisherTest extends AsyncTestCase
         $queue = $this->createMock(Queue::class);
         $queue->expects(self::once())->method('enqueue')->with($encoded);
 
-        $publisher = new Publisher($serializer);
+        $publisher = new SerializingPublisher($serializer);
         $publisher->publish($queue, $message);
     }
 }

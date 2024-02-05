@@ -6,14 +6,14 @@ namespace Nayleen\Async\Bus\Queue;
 
 use Nayleen\Async\Bus\Queue\Redis\Connection;
 
-class RedisQueue implements Queue
+readonly class RedisQueue implements Queue
 {
     /**
      * @param non-empty-string $name
      */
     public function __construct(
-        private readonly Connection $connection,
-        private readonly string $name,
+        private Connection $connection,
+        private string $name,
     ) {
         assert($this->name !== '');
     }

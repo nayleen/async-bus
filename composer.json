@@ -3,8 +3,8 @@
   "description": "An example Bus implementation for distributed event processing.",
   "license": "MIT",
   "require": {
-    "php": ">=8.1",
-    "nayleen/async": "~0"
+    "php": ">=8.3",
+    "nayleen/async": "~0.10"
   },
   "require-dev": {
     "amphp/redis": "^2",

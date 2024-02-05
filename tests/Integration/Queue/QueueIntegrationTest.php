@@ -60,7 +60,7 @@ final class QueueIntegrationTest extends AsyncTestCase
             'serialize' => $encoded,
         ]);
 
-        $publisher = new Publisher($serializer);
+        $publisher = new SerializingPublisher($serializer);
         $publisher->publish($queue, $message);
 
         self::assertSame($encoded, $queue->consume());

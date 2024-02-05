@@ -17,13 +17,13 @@ use Psr\Log\NullLogger;
  * - appending and prepending middleware
  * - adding event handlers
  */
-class Dispatcher
+readonly class Dispatcher
 {
-    private readonly MiddlewareBus $eventBus;
+    private MiddlewareBus $eventBus;
 
     public function __construct(
-        private readonly EventHandlers $eventHandlers = new EventHandlers(),
-        private readonly LoggerInterface $logger = new NullLogger(),
+        private EventHandlers $eventHandlers = new EventHandlers(),
+        private LoggerInterface $logger = new NullLogger(),
     ) {
         $this->eventBus = new MiddlewareBus(new EventBusMiddleware($this->eventHandlers, $this->logger));
     }

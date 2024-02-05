@@ -12,12 +12,12 @@ use Nayleen\Async\Bus\Queue\Queue;
 use Nayleen\Async\Bus\Queue\QueueMap;
 use OutOfBoundsException;
 
-class PublishesToConfiguredQueueMiddleware implements Middleware
+readonly class PublishesToConfiguredQueueMiddleware implements Middleware
 {
     public function __construct(
-        private readonly Publisher $publisher,
-        private readonly QueueMap $queueMap,
-        private readonly ?Queue $fallback = null,
+        private Publisher $publisher,
+        private QueueMap $queueMap,
+        private ?Queue $fallback = null,
     ) {}
 
     public function handle(Message $message, Closure $next): void

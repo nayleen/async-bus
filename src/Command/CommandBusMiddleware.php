@@ -12,12 +12,12 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 use Psr\Log\NullLogger;
 
-class CommandBusMiddleware implements Middleware
+readonly class CommandBusMiddleware implements Middleware
 {
     public function __construct(
-        private readonly CommandHandlers $handlers,
-        private readonly LoggerInterface $logger = new NullLogger(),
-        private readonly int|Level|string $level = LogLevel::DEBUG,
+        private CommandHandlers $handlers,
+        private LoggerInterface $logger = new NullLogger(),
+        private int|Level|string $level = LogLevel::DEBUG,
     ) {}
 
     /**
