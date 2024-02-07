@@ -6,6 +6,7 @@ namespace Nayleen\Async\Bus\Event;
 
 use Closure;
 use LogicException;
+use Nayleen\Async\Bus\Bus;
 use Nayleen\Async\Bus\Message;
 use Nayleen\Async\Bus\Middleware\Middleware;
 use Nayleen\Async\Bus\Middleware\MiddlewareBus;
@@ -17,7 +18,7 @@ use Psr\Log\NullLogger;
  * - appending and prepending middleware
  * - adding event handlers
  */
-readonly class Dispatcher
+readonly class Dispatcher implements Bus
 {
     private MiddlewareBus $eventBus;
 
@@ -29,10 +30,9 @@ readonly class Dispatcher
     }
 
     /**
-     * Appends a middleware to the event bus,
-     * making it the last middleware to be executed.
+     * Appends a middleware to the event bus, making it the last middleware to be executed.
      *
-     * @throws LogicException if the event bus has been finalized, e.g. after the first call to `handle()`
+     * @throws LogicException if the event bus has been finalized, i.e. after the first call to `handle()`
      */
     public function after(Middleware $middleware): void
     {
@@ -40,10 +40,9 @@ readonly class Dispatcher
     }
 
     /**
-     * Prepends a middleware to the event bus,
-     * making it the first middleware to be executed.
+     * Prepends a middleware to the event bus, making it the first middleware to be executed.
      *
-     * @throws LogicException if the event bus has been finalized, e.g. after the first call to `handle()`
+     * @throws LogicException if the event bus has been finalized, i.e. after the first call to `handle()`
      */
     public function before(Middleware $middleware): void
     {

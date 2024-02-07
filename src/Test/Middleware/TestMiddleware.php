@@ -8,10 +8,7 @@ use Closure;
 use Nayleen\Async\Bus\Message;
 use Nayleen\Async\Bus\Middleware\Middleware;
 
-/**
- * @psalm-internal Nayleen\Async
- */
-final readonly class TestMiddleware implements Middleware
+readonly class TestMiddleware implements Middleware
 {
     public function __construct(
         private Results $results,
