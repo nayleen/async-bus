@@ -50,12 +50,4 @@ class EventHandlers
     {
         return $this->handlers[$message->name()] ?? [];
     }
-
-    public function merge(self $other): self
-    {
-        $merged = new self();
-        $merged->handlers = array_merge_recursive($this->handlers, $other->handlers);
-
-        return $merged;
-    }
 }

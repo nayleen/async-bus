@@ -8,8 +8,9 @@
   },
   "require-dev": {
     "amphp/redis": "^2",
+    "monolog/monolog": "^3.3",
     "nayleen/codestandard": "dev-latest",
-    "nayleen/development-dependencies": "^3",
+    "nayleen/development-dependencies": "^3.4@dev",
     "roave/security-advisories": "dev-latest"
   },
   "suggest": {
@@ -43,7 +44,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-main": "0.10.x-dev"
+      "dev-main": "0.11.x-dev"
     }
   }
 }

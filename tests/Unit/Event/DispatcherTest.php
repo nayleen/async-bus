@@ -24,7 +24,7 @@ final class DispatcherTest extends AsyncTestCase
         $eventHandlers->expects(self::once())->method('add')->with('test', self::isInstanceOf(Closure::class));
 
         $dispatcher = new Dispatcher($eventHandlers);
-        $dispatcher->listen('test', fn (Message $message) => null);
+        $dispatcher->listen('test', function (Message $message): void {});
     }
 
     /**
